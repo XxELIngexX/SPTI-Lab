@@ -8,8 +8,8 @@
 		<version>3.3.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>edu.escuelaing.arsw.ASE.app</groupId>
-	<artifactId>WebSecurity</artifactId>
+	<groupId>edu.escuelaing.arsw.ase.app</groupId>
+	<artifactId>webSecurity</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>WebSecurity</name>
 	<description>SECURITY IN WEB APPLICATIONS AND WEBSOCKETS</description>

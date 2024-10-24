@@ -1,4 +1,4 @@
-package edu.escuelaing.arsw.ASE.app.WebSecurity;
+package edu.escuelaing.arsw.ase.app.webSecurity;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
