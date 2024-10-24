@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>edu.escuelaing.arsw.ase.app</groupId>
-	<artifactId>webSecurity</artifactId>
+	<artifactId>websecurity</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>WebSecurity</name>
 	<description>SECURITY IN WEB APPLICATIONS AND WEBSOCKETS</description>

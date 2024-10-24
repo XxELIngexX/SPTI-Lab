@@ -1,4 +1,4 @@
-package edu.escuelaing.arsw.ase.app.webSecurity;
+package edu.escuelaing.arsw.ase.app.websecurity;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

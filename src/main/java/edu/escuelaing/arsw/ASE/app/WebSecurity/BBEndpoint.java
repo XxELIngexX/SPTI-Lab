@@ -1,4 +1,4 @@
-package edu.escuelaing.arsw.ase.app.webSecurity;
+package edu.escuelaing.arsw.ase.app.websecurity;
 
 import java.io.IOException;
 import java.util.HashMap;
