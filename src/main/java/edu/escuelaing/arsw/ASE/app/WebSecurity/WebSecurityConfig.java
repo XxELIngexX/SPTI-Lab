@@ -7,6 +7,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -45,6 +47,11 @@ public class WebSecurityConfig {
                 return http.build();
         }
 
+        @Bean
+        public PasswordEncoder passwordEncoder() {
+                return new BCryptPasswordEncoder();
+        }
+
         /**
          * Defines an in-memory user details service with two users: "user" and "admin".
          * 
@@ -53,18 +60,21 @@ public class WebSecurityConfig {
          */
         @Bean
         public UserDetailsService userDetailsService() {
-                UserDetails user1 = User.withDefaultPasswordEncoder()
+                PasswordEncoder encoder = passwordEncoder();
+
+                UserDetails user1 = User.builder()
                                 .username("user")
-                                .password("password")
+                                .password(encoder.encode("S3cureP@ssword!"))
                                 .roles("USER")
                                 .build();
 
-                UserDetails user2 = User.withDefaultPasswordEncoder()
+                UserDetails user2 = User.builder()
                                 .username("admin")
-                                .password("adminpass")
+                                .password(encoder.encode("Adm1nS3cureP@ss!"))
                                 .roles("ADMIN")
                                 .build();
 
                 return new InMemoryUserDetailsManager(user1, user2);
         }
+
 }

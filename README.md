@@ -33,7 +33,7 @@ The project is a simple web application built with Spring Boot and Spring Securi
 You can clone the project repository using the following command:
 
 ```bash
-git clone https://github.com/yourusername/your-repo.git
+git clone https://github.com/XxELIngexX/SPTI-Lab
 ```
 
 ### Run the Application
@@ -49,6 +49,7 @@ git clone https://github.com/yourusername/your-repo.git
 
    ```bash
    mvn spring-boot:run
+   docker run --name some-redis -p 45000:6379 -d redis
    ```
 
 ![alt text](images/image2.png)
