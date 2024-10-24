@@ -11,7 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class TicketService {
 
-    private Map<String, TicketInfo> ticketStore = new HashMap<>();
+    private final Map<String, TicketInfo> ticketStore = new HashMap<>();
+    private final Random random = new Random();
+    private static final String CHARACTERS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final int TICKET_LENGTH = 10;
 
     /**
      * Verifies if a ticket is valid.
@@ -53,18 +56,16 @@ public class TicketService {
     }
 
     private String generateUniqueTicket() {
-        String characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        StringBuilder sb = new StringBuilder();
-        Random random = new Random();
-        for (int i = 0; i < 10; i++) {
-            char randomChar = characters.charAt(random.nextInt(characters.length()));
+        StringBuilder sb = new StringBuilder(TICKET_LENGTH);
+        for (int i = 0; i < TICKET_LENGTH; i++) {
+            char randomChar = CHARACTERS.charAt(random.nextInt(CHARACTERS.length()));
             sb.append(randomChar);
         }
         return sb.toString();
     }
 
     private static class TicketInfo {
-        private long expirationTime;
+        private final long expirationTime;
 
         /**
          * Constructs a new TicketInfo with an expiration time.

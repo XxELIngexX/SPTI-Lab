@@ -13,7 +13,6 @@ import jakarta.websocket.OnMessage;
 import jakarta.websocket.OnOpen;
 import jakarta.websocket.Session;
 import jakarta.websocket.server.ServerEndpoint;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -41,8 +40,16 @@ public class BBEndpoint {
      */
     private static Map<String, Session> ticketSessionMap = new HashMap<>();
     
-    @Autowired
-    private TicketService ticketService;
+    private final TicketService ticketService;
+
+    /**
+     * Constructor for dependency injection
+     *
+     * @param ticketService The ticket service for validating tickets
+     */
+    public BBEndpoint(TicketService ticketService) {
+        this.ticketService = ticketService;
+    }
 
     /**
      * Sends a message to all connected WebSocket clients except the sender.

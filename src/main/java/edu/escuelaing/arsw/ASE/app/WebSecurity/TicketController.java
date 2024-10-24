@@ -1,6 +1,5 @@
 package edu.escuelaing.arsw.ASE.app.WebSecurity;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -12,8 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/ticket")
 public class TicketController {
 
-    @Autowired
-    private TicketService ticketService;
+    private final TicketService ticketService;
+
+    /**
+     * Constructs a new TicketController with the required TicketService dependency.
+     *
+     * @param ticketService The service responsible for ticket operations
+     */
+    public TicketController(TicketService ticketService) {
+        this.ticketService = ticketService;
+    }
 
     /**
      * Endpoint to generate a new ticket for WebSocket authorization.
