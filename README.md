@@ -1,6 +1,6 @@
 # Web Security Application
 
-The project is a simple web application built with Spring Boot and Spring Security. It demonstrates how to secure web applications using Spring Security, featuring a custom login page and an in-memory user details service. The application ensures that only authenticated users can access certain pages, while allowing unrestricted access to the login and index pages. Additionally, it provides functionality for a shared drawing board, enabling users to collaborate in real-time within a secure environment.
+The project is a simple web application built with Spring Boot and Spring Security. It demonstrates how to secure web applications using Spring Security, featuring a custom login page and an in-memory user details service. The application ensures that only authenticated users can access certain pages while allowing unrestricted access to the login and index pages. Additionally, it provides functionality for a shared drawing board, enabling users to collaborate in real-time within a secure environment.
 
 ## Features
 
@@ -13,7 +13,7 @@ The project is a simple web application built with Spring Boot and Spring Securi
 ### Prerequisites
 
 - **Java**: Ensure Java Development Kit (JDK) version 17 is installed.
-- **Maven**: Automate and standardize the lifecycle of software construction.
+- **Maven**: Automate and standardize the software build lifecycle.
 - **Git**: Decentralized Configuration Manager.
 
 ### Installing
@@ -25,7 +25,7 @@ The project is a simple web application built with Spring Boot and Spring Securi
 
 2. **Git**
 
-   - Download Git from [here](https://github.com/JohannBulls/WebSecurity).
+   - Download Git from [here](https://git-scm.com/downloads).
    - Follow the installation instructions [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
 ### Clone the Repository
@@ -45,7 +45,25 @@ git clone https://github.com/XxELIngexX/SPTI-Lab
    mvn clean package
    ```
 
-3. Now, run the project using the following command:
+3. Make sure to set the following environment variables before running the project:
+
+   ```bash
+   export USER_PASSWORD=N3wS3cureP@ssword!
+   export ADMIN_PASSWORD=N3wAdm1nP@ssword!
+   export KEYSTORE_PASSWORD=pMsr8*1pYnI~e\s7M95?*Pf5tu55m{bQ%p
+   set TRUSTSTORE_PASSWORD=pMsr8*1pYnI~e\s7M95?*Pf5tu55m{bQ%p
+   ```
+
+   On Windows, use:
+
+   ```bash
+   set USER_PASSWORD=N3wS3cureP@ssword!
+   set ADMIN_PASSWORD=N3wAdm1nP@ssword!
+   set KEYSTORE_PASSWORD=pMsr8*1pYnI~e\s7M95?*Pf5tu55m{bQ%p
+   set TRUSTSTORE_PASSWORD=pMsr8*1pYnI~e\s7M95?*Pf5tu55m{bQ%p
+   ```
+
+4. Now, run the project using the following command:
 
    ```bash
    mvn spring-boot:run
@@ -54,7 +72,7 @@ git clone https://github.com/XxELIngexX/SPTI-Lab
 
 ![alt text](images/image2.png)
 
-4. Open a browser and go to the following link to access the login page:
+5. Open a browser and go to the following link to access the login page:
 
    [Login Page](http://localhost:8444/login)
 
@@ -71,8 +89,8 @@ git clone https://github.com/XxELIngexX/SPTI-Lab
 
 #### `BBConfigurator`
 
-- **Description**: Configuration class for WebSocket server endpoint and scheduling.
-- **Purpose**: Configures WebSocket server endpoint export using `@Configuration` and enables scheduling using `@EnableScheduling`.
+- **Description**: Configuration class for the WebSocket server endpoint and scheduling.
+- **Purpose**: Configures the WebSocket server endpoint using `@Configuration` and enables scheduling using `@EnableScheduling`.
 
 #### `BBEndpoint`
 
@@ -82,7 +100,7 @@ git clone https://github.com/XxELIngexX/SPTI-Lab
 #### `DrawingServiceController`
 
 - **Description**: REST controller for handling status requests.
-- **Purpose**: Provides a REST endpoint `/status` returning server status in JSON format, including the current date and time.
+- **Purpose**: Provides a REST endpoint `/status` returning the server status in JSON format, including the current date and time.
 
 #### `MvcConfig`
 
@@ -96,7 +114,7 @@ git clone https://github.com/XxELIngexX/SPTI-Lab
 
 #### `TicketService`
 
-- **Description**: Service managing generation, validation, and removal of tickets.
+- **Description**: Service managing the generation, validation, and removal of tickets.
 - **Purpose**: Manages tickets stored in memory, verifying their validity and removing them upon expiration.
 
 #### `WebSecurityConfig`
@@ -123,8 +141,8 @@ git clone https://github.com/XxELIngexX/SPTI-Lab
 ## Built with
 
 - **Spring Security** - Framework for securing Spring-based applications.
-- [Spring Boot](https://spring.io/projects/spring-boot) - Backend framework
-- [Maven](https://maven.apache.org/) - Dependency management
+- [Spring Boot](https://spring.io/projects/spring-boot) - Backend framework.
+- [Maven](https://maven.apache.org/) - Dependency management.
 
 ## Authors
 

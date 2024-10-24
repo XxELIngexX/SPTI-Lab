@@ -61,12 +61,12 @@ public class WebSecurityConfig {
         PasswordEncoder encoder = passwordEncoder();
         UserDetails user1 = User.builder()
             .username("user")
-            .password(encoder.encode("v![£s{3$d;#Mwc!ilNDs+^&A5S2HQV?&f6")) // Cambia a la nueva contraseña
+            .password(encoder.encode(System.getenv("USER_PASSWORD"))) // Obtener la contraseña de la variable de entorno
             .roles("USER")
             .build();
         UserDetails user2 = User.builder()
             .username("admin")
-            .password(encoder.encode("]UK$.5}id**}X#8Dhq7|V,Fc2£k.#H4_A&[")) // Cambia a la nueva contraseña
+            .password(encoder.encode(System.getenv("ADMIN_PASSWORD"))) // Obtener la contraseña de la variable de entorno
             .roles("ADMIN")
             .build();
         return new InMemoryUserDetailsManager(user1, user2);
