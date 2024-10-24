@@ -20,61 +20,55 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+    /**
+     * Configures the {@link HttpSecurity} to define security policies.
+     * 
+     * @param http The {@link HttpSecurity} instance to configure
+     * @return The configured {@link SecurityFilterChain}
+     * @throws Exception If an error occurs while configuring the security filter
+     *                   chain
+     */
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        http
+            .authorizeHttpRequests((requests) -> requests
+                .requestMatchers("index").permitAll() // Allow access to the index page
+                                                        // without authentication
+                .anyRequest().authenticated() // Require authentication for all other
+                                                // requests
+            )
+            .formLogin((form) -> form
+                .loginPage("/login") // Specify the custom login page
+                .permitAll() // Allow access to the login page without authentication
+            )
+            .logout((logout) -> logout.permitAll()); // Allow logout for all users
+        return http.build();
+    }
 
-        /**
-         * Configures the {@link HttpSecurity} to define security policies.
-         * 
-         * @param http The {@link HttpSecurity} instance to configure
-         * @return The configured {@link SecurityFilterChain}
-         * @throws Exception If an error occurs while configuring the security filter
-         *                   chain
-         */
-        @Bean
-        public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-                http
-                                .authorizeHttpRequests((requests) -> requests
-                                                .requestMatchers("index").permitAll() // Allow access to the index page
-                                                                                      // without authentication
-                                                .anyRequest().authenticated() // Require authentication for all other
-                                                                              // requests
-                                )
-                                .formLogin((form) -> form
-                                                .loginPage("/login") // Specify the custom login page
-                                                .permitAll() // Allow access to the login page without authentication
-                                )
-                                .logout((logout) -> logout.permitAll()); // Allow logout for all users
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 
-                return http.build();
-        }
-
-        @Bean
-        public PasswordEncoder passwordEncoder() {
-                return new BCryptPasswordEncoder();
-        }
-
-        /**
-         * Defines an in-memory user details service with two users: "user" and "admin".
-         * 
-         * @return An instance of {@link InMemoryUserDetailsManager} with predefined
-         *         users
-         */
-        @Bean
-        public UserDetailsService userDetailsService() {
-                PasswordEncoder encoder = passwordEncoder();
-
-                UserDetails user1 = User.builder()
-                                .username("user")
-                                .password(encoder.encode("S3cureP@ssword!"))
-                                .roles("USER")
-                                .build();
-
-                UserDetails user2 = User.builder()
-                                .username("admin")
-                                .password(encoder.encode("Adm1nS3cureP@ss!"))
-                                .roles("ADMIN")
-                                .build();
-
-                return new InMemoryUserDetailsManager(user1, user2);
-        }
-
+    /**
+     * Defines an in-memory user details service with two users: "user" and "admin".
+     * 
+     * @return An instance of {@link InMemoryUserDetailsManager} with predefined
+     *         users
+     */
+    @Bean
+    public UserDetailsService userDetailsService() {
+        PasswordEncoder encoder = passwordEncoder();
+        UserDetails user1 = User.builder()
+            .username("user")
+            .password(encoder.encode("v![£s{3$d;#Mwc!ilNDs+^&A5S2HQV?&f6")) // Cambia a la nueva contraseña
+            .roles("USER")
+            .build();
+        UserDetails user2 = User.builder()
+            .username("admin")
+            .password(encoder.encode("]UK$.5}id**}X#8Dhq7|V,Fc2£k.#H4_A&[")) // Cambia a la nueva contraseña
+            .roles("ADMIN")
+            .build();
+        return new InMemoryUserDetailsManager(user1, user2);
+    }
 }
