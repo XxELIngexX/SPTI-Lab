@@ -15,8 +15,8 @@ function startAudioContext() {
  * @returns {string} The WebSocket URL.
  */
 function BBServiceURL() {
-  var host = window.location.host;
-  var url = "ws://" + host + "/bbService";
+  const host = window.location.host;
+  let url = "ws://" + host + "/bbService";
   // Uncomment the line below for secure WebSocket connections on Heroku
   // if (host.toString().startsWith("localhost")) {
   //   url = "wss://" + host + "/bbService";
